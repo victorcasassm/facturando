@@ -1,0 +1,25 @@
+<%= form_for(@detalle) do |f| %>
+  <% if @detalle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @detalle.errors.size==1?"Error":"Errores" %> impidiendo la operación:</h2>
+      <ul>
+      <% @detalle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :factura_id, :value => session[:factura_id] %>
+  <div class="field">
+    <%= f.label :producto %><br>
+    <%= f.select :producto, Producto.all.collect{ |v| [v.nombre, v.id]} %>
+  </div>
+    <div class="field">
+    <%= f.label :cantidad %><br>
+    <%= f.text_field :cantidad %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

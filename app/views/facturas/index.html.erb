@@ -1,0 +1,29 @@
+<%= link_to 'Clientes', clientes_path %>
+<%= link_to 'Productos', productos_path %>
+<%= 'Facturas' %>
+<h1>Listado de facturas</h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Cliente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @facturas.each do |factura| %>
+      <tr>
+        <td><%= factura.fecha.strftime('%d %b %Y, %H:%M:%S') %></td>
+        <td align="right"><%= factura.cliente.numero %></td>
+        <td><%= link_to (t '.show'), detalles_path(factura_id: factura.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Factura', new_factura_path %>

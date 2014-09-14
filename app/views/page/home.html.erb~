@@ -1,0 +1,5 @@
+<h1>Bienvenido a la Aplicación 'Cooperativa - Herbolario'</h1>
+<p>Eres libre de realizar las operaciones que permite, la aplicaión está en pruebas.</p>
+<%= link_to 'Socios', socios_path %>
+<%= link_to 'Variedades', variedads_path %>
+<%= link_to 'Retiradas', retiradas_path %>

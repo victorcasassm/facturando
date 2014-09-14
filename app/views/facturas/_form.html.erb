@@ -1,0 +1,22 @@
+<%= form_for(@factura) do |f| %>
+  <% if @factura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @factura.errors.size==1?"Error":"Errores" %> impidiendo la operación:</h2>
+
+      <ul>
+      <% @factura.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :fecha, :value => DateTime.now %>
+  <div class="field">
+    <%= f.label :cliente_id %><br>
+    <%= f.select :cliente_id, Cliente.all.collect{ |s| [s.numero, s.id] }, {:include_blank => 'Cliente'}  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

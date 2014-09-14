@@ -1,0 +1,36 @@
+<%= link_to 'Clientes', clientes_path %>
+<%= 'Productos' %>
+<%= link_to 'Facturas', facturas_path %>
+<h1>Listado de productos</h1>
+<p id="notice"><%= notice %></p>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Comentarios</th>
+      <th>Fecha</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productos.each do |producto| %>
+      <tr>
+        <td><%= producto.nombre %></td>
+        <td><%= producto.precio %></td>
+        <td><%= producto.cantidad %></td>
+        <td><%= producto.comentarios %></td>
+        <td><%= producto.fecha.strftime('%d %b %Y, %H:%M') %></td>
+        <td><%= link_to (t '.show'), producto %></td>
+        <td><%= link_to (t '.edit'), edit_producto_path(producto) %></td>
+        <td><%= link_to (t '.destroy'), producto, method: :delete, data: { confirm: '¿Seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Producto', new_producto_path %>

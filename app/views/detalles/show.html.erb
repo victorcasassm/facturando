@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Producto:</strong>
+  <%= @detalle.producto %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @detalle.precio %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @detalle.cantidad %>
+</p>
+
+<p>
+  <strong>Factura:</strong>
+  <%= @detalle.factura %>
+</p>
+
+<%= link_to 'Edit', edit_detalle_path(@detalle) %> |
+<%= link_to 'Back', detalles_path %>
