@@ -25,7 +25,6 @@ class FacturasController < ApplicationController
   # POST /facturas.json
   def create
     @factura = Factura.new(factura_params)
-
     respond_to do |format|
       if @factura.save
         session[:factura_id] = @factura.id

@@ -5,8 +5,9 @@ class DetallesController < ApplicationController
   # GET /detalles.json
   def index
     @detalles = Detalle.all
-    session[:factura_id] = params[:factura_id]
-
+    if params[:factura_id].present?
+      session[:factura_id] = params[:factura_id]
+    end
   end
 
   # GET /detalles/1
@@ -26,17 +27,16 @@ class DetallesController < ApplicationController
   # POST /detalles
   # POST /detalles.json
   def create 
-      @detalle = Detalle.new(detalle_params)
+    @detalle = Detalle.new(detalle_params)
     unless ((params[:detalle][:producto])).blank?
       @detalle.producto = (Producto.find(params[:detalle][:producto])).nombre
       @detalle.precio = (Producto.find(params[:detalle][:producto])).precio
+      @detalle.factura_id = session[:factura_id]
     end 
     respond_to do |format|
       if @detalle.save
-        unless @detalle.factura_id == nil
         format.html { redirect_to detalles_url }
-        format.json { render :show, status: :created, location: @detalle }
-      end
+        format.json { render :show, status: :created, location: @detalle } 
       else
         format.html { render :new }
         format.json { render json: @detalle.errors, status: :unprocessable_entity }
