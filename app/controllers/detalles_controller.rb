@@ -33,8 +33,10 @@ class DetallesController < ApplicationController
     end 
     respond_to do |format|
       if @detalle.save
+        unless @detalle.factura_id == nil
         format.html { redirect_to detalles_url }
         format.json { render :show, status: :created, location: @detalle }
+      end
       else
         format.html { render :new }
         format.json { render json: @detalle.errors, status: :unprocessable_entity }
@@ -61,7 +63,7 @@ class DetallesController < ApplicationController
   def destroy
     @detalle.destroy
     respond_to do |format|
-      format.html { redirect_to detalles_url, notice: 'Detalle eliminado correctamente.' }
+      format.html { redirect_to :back, notice: 'Detalle eliminado correctamente.' }
       format.json { head :no_content }
     end
   end

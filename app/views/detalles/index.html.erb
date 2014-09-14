@@ -7,8 +7,8 @@
 <% apellidos = (Factura.find(session[:factura_id])).cliente.apellidos %>
 <% fecha = (Factura.find(session[:factura_id])).fecha %>
 <h1><%= 'Factura ' + session[:factura_id].to_s %></h1>
-<h4><%= '(' + fecha.strftime('%d %b %Y, %H:%M') + ')' %></h4>
-<h3><%= "Cliente "+ numero.to_s + ": " + apellidos+ ", " +nombre %></h3>
+<h5><%= fecha.strftime('%d %b %Y, %H:%M') %></h5>
+<h4><%= "Cliente "+ numero.to_s + ": " + apellidos+ ", " +nombre %></h4>
 </h2>
 <table>
   <thead>
