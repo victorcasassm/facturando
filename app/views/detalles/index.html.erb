@@ -29,7 +29,7 @@
           <td><%= detalle.producto %></td>
           <td><%= detalle.cantidad %></td>
           <td><%= detalle.precio %></td>
-          <td><%= subtotal = detalle.cantidad.to_f*detalle.precio.to_f %></td>
+          <td><% subtotal = detalle.cantidad.to_f*detalle.precio.to_f %><%= number_with_precision(subtotal, :precision => 2) %></td>
           <td><%= link_to (t '.destroy'), detalle, method: :delete, data: { confirm: '¿Seguro?' } %></td>
         </tr>
         <% total = total + subtotal %>
@@ -39,7 +39,7 @@
         <td></td>
         <td></td>
         <td>TOTAL:</td>
-        <td><%= total %></td>
+        <td><%= number_with_precision(total, :precision => 2) %></td>
         <td></td>
         <td></td>
       </tr>
