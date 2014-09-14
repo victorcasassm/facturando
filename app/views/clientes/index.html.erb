@@ -22,7 +22,6 @@
         <td><%= cliente.nombre %></td>
         <td><%= cliente.apellidos %></td>
         <td><%= cliente.comentarios %></td>
-        <td><%= link_to (t '.show'), cliente %></td>
         <td><%= link_to (t '.edit'), edit_cliente_path(cliente) %></td>
         <td><%= link_to (t '.destroy'), cliente, method: :delete, data: { confirm: '¿Seguro?' } %></td>
       </tr>

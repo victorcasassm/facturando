@@ -23,7 +23,6 @@
         <td><%= producto.cantidad %></td>
         <td><%= producto.comentarios %></td>
         <td><%= producto.fecha.strftime('%d %b %Y, %H:%M') %></td>
-        <td><%= link_to (t '.show'), producto %></td>
         <td><%= link_to (t '.edit'), edit_producto_path(producto) %></td>
         <td><%= link_to (t '.destroy'), producto, method: :delete, data: { confirm: '¿Seguro?' } %></td>
       </tr>
