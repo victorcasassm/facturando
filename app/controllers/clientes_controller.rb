@@ -42,7 +42,7 @@ class ClientesController < ApplicationController
   def update
     respond_to do |format|
       if @cliente.update(cliente_params)
-        format.html { redirect_to @cliente, notice: 'Cliente was successfully updated.' }
+        format.html { redirect_to @cliente, notice: 'Socio actualizado correctamente.' }
         format.json { render :show, status: :ok, location: @cliente }
       else
         format.html { render :edit }
@@ -54,11 +54,18 @@ class ClientesController < ApplicationController
   # DELETE /clientes/1
   # DELETE /clientes/1.json
   def destroy
-    @cliente.destroy
-    respond_to do |format|
-      format.html { redirect_to clientes_url, notice: 'Cliente was successfully destroyed.' }
+    begin
+      @cliente.destroy
+      respond_to do |format|
+      format.html { redirect_to clientes_url, notice: 'Cliente eliminado correctamente.' }
       format.json { head :no_content }
-    end
+      end
+    rescue
+      respond_to do |format|
+        format.html { redirect_to clientes_url, notice: 'Cliente imposible de eliminar mientras tenga facturas.' }
+        format.json { head :no_content }
+      end
+    end 
   end
 
   private

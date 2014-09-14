@@ -13,9 +13,3 @@
  *= require_tree .
  *= require_self
  */
-body {
-    background-color: #C0D890;margin-left:75px;margin-top:40px
-}
-a:link {
-    color: #504A4B;
-}

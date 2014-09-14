@@ -19,6 +19,7 @@
         <td><%= factura.fecha.strftime('%d %b %Y, %H:%M:%S') %></td>
         <td align="right"><%= factura.cliente.numero %></td>
         <td><%= link_to (t '.show'), detalles_path(factura_id: factura.id) %></td>
+        <td><%= link_to (t '.destroy'), factura, method: :delete, data: { confirm: '¿Seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

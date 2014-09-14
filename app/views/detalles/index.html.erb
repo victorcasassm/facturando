@@ -6,8 +6,9 @@
 <% numero = (Factura.find(session[:factura_id])).cliente.numero %>
 <% apellidos = (Factura.find(session[:factura_id])).cliente.apellidos %>
 <% fecha = (Factura.find(session[:factura_id])).fecha %>
-<h1><%= 'Listado de detalles de la Factura núm. ' + session[:factura_id].to_s %></h1>
-<h2><%= "Cliente núm "+numero.to_s+" - "+nombre+" "+apellidos+" ( "+fecha.strftime('%d %b %Y, %H:%M')+")" %></h2>
+<h1><%= 'Factura ' + session[:factura_id].to_s %></h1>
+<h4><%= '(' + fecha.strftime('%d %b %Y, %H:%M') + ')' %></h4>
+<h3><%= "Cliente "+ numero.to_s + ": " + apellidos+ ", " +nombre %></h3>
 </h2>
 <table>
   <thead>
@@ -29,7 +30,8 @@
           <td><%= detalle.producto %></td>
           <td><%= detalle.cantidad %></td>
           <td><%= detalle.precio %></td>
-          <td><% subtotal = detalle.cantidad.to_f*detalle.precio.to_f %><%= number_with_precision(subtotal, :precision => 2) %></td>
+          <td align="right"><% subtotal = detalle.cantidad.to_f*detalle.precio.to_f %>
+          <%= number_with_precision(subtotal, :precision => 2) %></td>
           <td><%= link_to (t '.destroy'), detalle, method: :delete, data: { confirm: '¿Seguro?' } %></td>
         </tr>
         <% total = total + subtotal %>
@@ -39,7 +41,7 @@
         <td></td>
         <td></td>
         <td>TOTAL:</td>
-        <td><%= number_with_precision(total, :precision => 2) %></td>
+        <td align="right"><%= number_with_precision(total, :precision => 2) %></td>
         <td></td>
         <td></td>
       </tr>

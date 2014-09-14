@@ -5,6 +5,7 @@ class DetallesController < ApplicationController
   # GET /detalles.json
   def index
     @detalles = Detalle.all
+    session[:factura_id] = params[:factura_id]
 
   end
 
