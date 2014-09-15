@@ -17,10 +17,6 @@
     margin-left:250px;margin-top:80px;
     background-color: #F6F6F6;
 }
-body {
-    -moz-transform: scale(1.33, 1.33); /* Moz-browsers */
-    zoom: 1.33; /* Other non-webkit browsers */
-    zoom: 133%; /* Webkit browsers */
-}
+
 
 
