@@ -32,6 +32,9 @@ class DetallesController < ApplicationController
       @detalle.producto = (Producto.find(params[:detalle][:producto])).nombre
       @detalle.precio = (Producto.find(params[:detalle][:producto])).precio
       @detalle.factura_id = session[:factura_id]
+      @producto = Producto.find(params[:detalle][:producto])
+      @producto.cantidad = @producto.cantidad - (params[:detalle][:cantidad]).to_f
+      @producto.save
     end 
     respond_to do |format|
       if @detalle.save
