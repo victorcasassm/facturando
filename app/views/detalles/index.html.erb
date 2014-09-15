@@ -39,8 +39,24 @@
       <tr>
         <td></td>
         <td></td>
-        <td>TOTAL:</td>
+        <td>Suma:</td>
         <td align="right"><%= number_with_precision(total, :precision => 2) %></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>IVA:</td>
+        <td align="right"><%= number_with_precision(total*21/100, :precision => 2) %></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Total:</td>
+        <td align="right"><%= number_with_precision(total+(total*21/100), :precision => 2) %></td>
         <td></td>
         <td></td>
       </tr>
